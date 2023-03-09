@@ -13,3 +13,4 @@
 11-directories_permissions gives execute permission to only dir exclude files
 12-directory_permissions makes dir and set mode simultanously
 13-change_group changes file group owner to school
+100-change_owner_and_group changes ownwer and group for all files and dir

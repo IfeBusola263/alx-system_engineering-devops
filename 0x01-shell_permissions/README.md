@@ -12,3 +12,4 @@
 10-mirror_permissions sets the permission of a file as the mirror of another
 11-directories_permissions gives execute permission to only dir exclude files
 12-directory_permissions makes dir and set mode simultanously
+13-change_group changes file group owner to school

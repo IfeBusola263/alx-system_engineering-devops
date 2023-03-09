@@ -10,3 +10,5 @@
 8-James_Bond sets u&g to not permission, but all permission to o
 9-John_Doe set permission of file to -rwxr-x-wx
 10-mirror_permissions sets the permission of a file as the mirror of another
+11-directories_permissions gives execute permission to only dir exclude files
+12-directory_permissions makes dir and set mode simultanously

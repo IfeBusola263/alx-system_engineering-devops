@@ -14,3 +14,4 @@
 12-directory_permissions makes dir and set mode simultanously
 13-change_group changes file group owner to school
 100-change_owner_and_group changes ownwer and group for all files and dir
+101-symbolic_link_permissions changes the owner of a symbolic link

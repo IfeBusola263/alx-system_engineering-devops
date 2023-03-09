@@ -15,3 +15,5 @@
 13-change_group changes file group owner to school
 100-change_owner_and_group changes ownwer and group for all files and dir
 101-symbolic_link_permissions changes the owner of a symbolic link
+102-if_only Changes owner name is a specified owner is identified
+103-Star_Wars  will play the StarWars IV episode in the terminal

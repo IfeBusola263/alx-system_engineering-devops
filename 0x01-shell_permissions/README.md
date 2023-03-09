@@ -7,3 +7,4 @@
 5-execute give execute permission to owner
 6-multipile_permissions adds execute permission to u&g and read to o
 7-everybody adds adds execution permssion for all users
+8-James_Bond sets u&g to not permission, but all permission to o

@@ -8,3 +8,4 @@
 6-create_local_variable creates a new local variable
 7-create_global_variable creates a global variable
 8-true_knowledge gives answer to arithemetic expression with new line
+9-divide_and_rule gives the answer to a division expression

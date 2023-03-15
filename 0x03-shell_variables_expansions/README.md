@@ -12,3 +12,4 @@
 10-love_exponent_breath displays the BREATH to the power of LOVE
 11-binary_to_decimal converts binary to decimal
 12-combinations prints alpha combinations negating 'oo'
+13-print_float prints a number to 2decimal places

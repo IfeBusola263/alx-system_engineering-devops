@@ -14,4 +14,4 @@
 12-combinations prints alpha combinations negating 'oo'
 13-print_float prints a number to 2decimal places
 100-decimal_to_hexadecimal prints decimal to hexadecimal
-
+102-odd prints every other line from the input, starting with the first line.

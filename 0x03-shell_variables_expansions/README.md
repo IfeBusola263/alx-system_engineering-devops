@@ -9,3 +9,4 @@
 7-create_global_variable creates a global variable
 8-true_knowledge gives answer to arithemetic expression with new line
 9-divide_and_rule gives the answer to a division expression
+10-love_exponent_breath displays the BREATH to the power of LOVE

@@ -13,3 +13,5 @@
 11-binary_to_decimal converts binary to decimal
 12-combinations prints alpha combinations negating 'oo'
 13-print_float prints a number to 2decimal places
+100-decimal_to_hexadecimal prints decimal to hexadecimal
+

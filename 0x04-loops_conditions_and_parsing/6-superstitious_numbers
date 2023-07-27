@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script displays numbers from 1 through to 20
+#+ and some text after the 4th, 9th and 17th iterations
+
+count=1
+string="bad luck from China"
+string1="bad luck from Japan"
+string2="bad luck from Italy"
+while [ $count -le 20 ]; do
+    echo "$count"
+    case "$count" in
+	"4")
+	    echo "$string"
+	    ;;
+	"9")
+	    echo "$string1"
+	    ;;
+	"17")
+	    echo "$string2"
+	    ;;
+     esac
+    (( count++))
+done

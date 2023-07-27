@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script prints "Best School" all the time, but "Hi' on the 9th.
+
+count=10
+string="Best School"
+string1="bad luck"
+string2="good luck"
+while [ $count -ge 1 ]; do
+    if [ $count -eq 3 ]; then
+	echo "$string2"
+    elif [ $count -eq 7 ]; then
+	echo "$string1"
+    else
+	echo "$string"
+    fi
+    (( count--))
+done

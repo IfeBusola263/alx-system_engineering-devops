@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script prints "Best School" 10 times.
+
+count=10
+string="Best School"
+while [ $count -ne 0 ]
+do
+    echo "$string"
+    (( count--))
+done

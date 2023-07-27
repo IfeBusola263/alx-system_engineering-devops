@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# This script prints "Best School" 10 times.
+# This script prints "Best School" all the time, but "Hi' on the 9th.
 
-count=10
+count=11
 string="Best School"
 string1="Hi"
 while [ $count -ge 1 ]; do

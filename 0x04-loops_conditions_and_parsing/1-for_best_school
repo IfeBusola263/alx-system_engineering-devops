@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script prints best school 10 times using the for loop
+
+string="Best School"
+
+for i in {0..9}
+do
+  echo "$string"
+done
+
+export i

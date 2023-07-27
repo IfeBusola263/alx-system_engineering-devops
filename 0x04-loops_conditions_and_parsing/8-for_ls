@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays the content of the pwd
+
+find . -type f | cut -d "-" -f 2

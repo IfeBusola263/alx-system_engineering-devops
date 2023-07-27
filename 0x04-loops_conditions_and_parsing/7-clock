@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script displays time of the day for 12 hours
+
+HOUR=0
+MINUTES=1
+
+while [ $HOUR -le 12 ]; do
+    echo "Hour: $HOUR"
+    while [ $MINUTES -le 59 ]; do
+	echo "$MINUTES"
+	(( MINUTES++ ))
+    done
+    MINUTES=1
+    (( HOUR++))
+done

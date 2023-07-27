@@ -3,9 +3,8 @@
 
 string="Best School"
 
-for i in {0..9}
+for _ in {0..9}
 do
   echo "$string"
 done
 
-export i

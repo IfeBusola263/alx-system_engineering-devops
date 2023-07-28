@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#script displays the current running processes
+# This script displays the current running processes
 
 ps -u

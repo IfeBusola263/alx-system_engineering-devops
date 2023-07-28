@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# The script runs into an infinite loop
+
+process=$(pgrep -f "./7-highlander")
+
+kill -9 "$process"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# The script runs into an infinite loop
+
+kill "$(pidof 4-to_infinity_and_beyond)"

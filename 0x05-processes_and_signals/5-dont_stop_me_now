@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # The script runs into an infinite loop
 
-kill "$(pgrep 4-to_infinity_and_beyond)"
+process=$(pgrep 4-to_infinity_and_beyond)
+
+kill -9 $process

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script continuously writes 'I am alive!' to the /tmp/my_process file
+
+
+touch /tmp/my_process
+
+while true; do
+      echo "I am alive!"
+      sleep 2
+done > /tmp/my_process

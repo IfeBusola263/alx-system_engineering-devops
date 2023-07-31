@@ -2,4 +2,7 @@
 # This script displays the visitor IP along with the HTTP status code
 #+ from an apache-access.log file
 
-awk '{print $1" "$10}' apache-access.log
+log_file="./apache-access.log"
+if [ -e "$log_file" ] && [ -f "$log_file" ] && [ -r "$log_file" ] && [ -s "$log_file" ]; then
+    awk '{print $1" "$9}' "$log_file"
+fi

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script answers questions on TCP and UDP
+netstat -lp

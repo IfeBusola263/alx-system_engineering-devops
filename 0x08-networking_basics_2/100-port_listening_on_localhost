@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# The script displays all the active IPV4 IPs on the machine
-#+ it is executed on.
+# The script sets the local host to listen on port 98
 
 nc -l localhost 98

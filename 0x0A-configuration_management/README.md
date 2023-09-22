@@ -1,14 +1,14 @@
 # Configuration Management
 
-<center><h5>This is a project on configuration management</h5></center>
+<h5 style="text-align: center;">This is a project on configuration management</h5>
 
-==0-create_a_file.pp :==
+0-create_a_file.pp :
 
 ```
 
 This manifest creates a file in /tmp.
 
-Requirements
+ ==Requirements:==
 
 File path is /tmp/school
 File permission is 0744
@@ -21,30 +21,27 @@ File contains I love Puppet
 <br>
 <br>
 
-* 1-install_a_package.pp:
+1-install_a_package.pp:
 ```
-{
 Using Puppet, this manifest installs flask from pip3.
+```
 
-==Requirements:==
-
+ ==Requirements:==
+```
 Install flask
 Version must be 2.1.0
-}
 ```
 <br>
 <br>
 
-* 2-execute_a_command.pp:
+2-execute_a_command.pp:
 ```
-{
 Using Puppet, this manifest that kills a process named killmenow.
-
-==Requirements:==
-
+```
+ ==Requirements:==
+```
 Must use the exec Puppet resource
 Must use pkill
-}
 ```
 
 <br>

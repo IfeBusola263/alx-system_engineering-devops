@@ -2,4 +2,5 @@
 
 exec {'killmenow':
   command  => 'pkill killmenow',
+  unless   => 'pgrep killmenow',
   }

@@ -1,7 +1,6 @@
 # Configuration Management
 
 <h5 style="text-align: center;">This is a project on configuration management</h5>
----
 
 0-create_a_file.pp :
 
@@ -46,4 +45,3 @@ Must use pkill
 ```
 
 <br>
----

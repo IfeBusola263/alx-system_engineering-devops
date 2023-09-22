@@ -1,6 +1,6 @@
 #Configuration Management
 ===
-<h5>This is a project on configuration management.<h5>
+<centre><h5>This is a project on configuration management</h5></centre>
 * 0-create_a_file.pp :
 
 ```

@@ -1,20 +1,21 @@
 # Configuration Management
-===
+
 <center><h5>This is a project on configuration management</h5></center>
-* 0-create_a_file.pp :
+
+==0-create_a_file.pp :==
 
 ```
-{
+
 This manifest creates a file in /tmp.
 
-==Requirements:==
+Requirements
 
 File path is /tmp/school
 File permission is 0744
 File owner is www-data
 File group is www-data
 File contains I love Puppet
-}
+
 ```
 
 <br>

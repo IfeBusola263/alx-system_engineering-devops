@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# The script creates an ssh key with the specified filename
+
+ssh-keygen -b 4096 -f school -N "betty"

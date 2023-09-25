@@ -14,4 +14,4 @@ location = /404.html {\
 root /usr/share/nginx/html;\
 internal;\
 }|' /etc/nginx/sites-enabled/default
-sudo service nginx restart
+service nginx restart

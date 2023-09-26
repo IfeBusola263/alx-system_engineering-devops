@@ -5,5 +5,8 @@ str2='listen \[::\]:80 default_server;\n\tlocation \/redirect_me {\n\treturn 301
 sudo apt-get update
 sudo apt-get -y install nginx
 echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo sed -i "s|${str1}|${str2}|" /etc/nginx/sites-enabled/default
+# sudo sed -i "s|${str1}|${str2}|" /etc/nginx/sites-enabled/default
+sudo sed -i "s|${str1}|${str2}|" /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo service nginx start

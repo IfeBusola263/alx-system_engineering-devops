@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script sort the "curl: (52) Empty reply from server" error
+
+apt-get update
+apt-get -y install apache2
+echo "Hello Holberton" > /var/www/html/index.html
+service apache2 start

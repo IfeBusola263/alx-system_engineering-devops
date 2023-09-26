@@ -3,7 +3,7 @@ include stdlib
 
 package { 'nginx':
   ensure   => installed,
-  provider => 'apt-get',
+  x# provider => 'apt-get',
 }
 
 file {'/var/www/html/index.html':
@@ -13,24 +13,32 @@ file {'/var/www/html/index.html':
 
 exec { '/etc/nginx/sites-enabled/default':
   ensure  =>   present,
-  command =>   'sudo rm /etc/nginx/sites-enabled/default'
-  }
+  command =>   'sudo rm /etc/nginx/sites-enabled/default',
+}
 
-  file_line { 'listen \[::\]:80 default_server;':
-    ensure             => present,
-    path               => '/etc/nginx/sites-available/default',
-    line               => 'listen \[::\]:80 default_server;',
-    match              => 'listen \[::\]:80 default_server;\n\tlocation \/redirect_me {
+file_line { 'listen \[::\]:80 default_server;':
+  ensure             => present,
+  path               => '/etc/nginx/sites-available/default',
+  line               => 'listen \[::\]:80 default_server;\n\tlocation \/redirect_me {
 \treturn 301 https:\/\/www.youtube.com\/watch\?v\=QH2-TGUlwu4;\n\t}',
-    append_on_on_match => false,
-  }
+  match              => 'listen \[::\]:80 default_server;',
+  append_on_on_match => false,
+}
 
-  exec { '/etc/nginx/sites-available/default':
-    ensure  =>  present,
-    command =>  'sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/'
-  }
+# exec { '/etc/nginx/sites-available/default':
+#   ensure  =>  present,
+#   command =>  'sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/'
+# }
 
-  exec { 'nginx':
-    command  => 'sudo service nginx start',
-  }
+# exec { 'nginx':
+#   command  => 'sudo service nginx start',
+# }
 
+file { '/etc/nginx/sites-enabled/default':
+  ensure =>  link,
+  target =>  '/etc/nginx/sites-available/default',
+}
+
+service { 'nginx':
+  ensure  => 'running',
+}

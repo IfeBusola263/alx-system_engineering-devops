@@ -1,9 +1,11 @@
 # This manifest installs a new Nginx web server in a server
-include stdlib
+
+$str1='listen \[::\]:80 default_server;'
+$str2='listen \[::\]:80 default_server;\n\tlocation \/redirect_me {\n\treturn 301 https:\/\/www.youtube.com\/watch\?v\=QH2-TGUlwu4;\n\t}'
+$str3= "sudo sed -i 's|${str1#\//\\/}|${str2#\//\\/}|' /etc/nginx/sites-available/default"
 
 package { 'nginx':
   ensure   => installed,
-  x# provider => 'apt-get',
 }
 
 file {'/var/www/html/index.html':
@@ -11,28 +13,14 @@ file {'/var/www/html/index.html':
   content => 'Hello World!',
 }
 
-exec { '/etc/nginx/sites-enabled/default':
-  ensure  =>   present,
-  command =>   'sudo rm /etc/nginx/sites-enabled/default',
+file { '/etc/nginx/sites-enabled/':
+  ensure    => absent,
 }
 
-file_line { 'listen \[::\]:80 default_server;':
-  ensure             => present,
-  path               => '/etc/nginx/sites-available/default',
-  line               => 'listen \[::\]:80 default_server;\n\tlocation \/redirect_me {
-\treturn 301 https:\/\/www.youtube.com\/watch\?v\=QH2-TGUlwu4;\n\t}',
-  match              => 'listen \[::\]:80 default_server;',
-  append_on_on_match => false,
+exec { '/etc/nginx/sites-available/default':
+  path    => '/bin',
+  command => $str3,
 }
-
-# exec { '/etc/nginx/sites-available/default':
-#   ensure  =>  present,
-#   command =>  'sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/'
-# }
-
-# exec { 'nginx':
-#   command  => 'sudo service nginx start',
-# }
 
 file { '/etc/nginx/sites-enabled/default':
   ensure =>  link,

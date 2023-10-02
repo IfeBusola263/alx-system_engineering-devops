@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script configures a new server and adds a custom header
+
+str1="# as directory, then fall back to displaying a 404."
+str2="# as directory, then fall back \
+to displaying a 404.\n\t\tadd_header X-Served-By \"$HOSTNAME\";"
+
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo sed -i "s|${str1}|${str2}|" /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo service nginx start

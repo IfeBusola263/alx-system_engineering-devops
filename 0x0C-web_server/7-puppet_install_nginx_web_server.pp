@@ -1,4 +1,4 @@
-# This manifest installs a new Nginx web server in a server
+# This manifest installs a new Nginx web server in a server                            
 
 $str1='listen \[::\]:80 default_server;'
 $str2='listen \[::\]:80 default_server;\n\tlocation \/redirect_me {\n\treturn 301 https:\/\/www.youtube.com\/watch\?v\=QH2-TGUlwu4;\n\t}'
@@ -28,5 +28,6 @@ file { '/etc/nginx/sites-enabled/default':
 }
 
 service { 'nginx':
-  ensure  => 'running',
+   ensure  => running,
 }
+

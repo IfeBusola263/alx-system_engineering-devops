@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script installs a load balancer in a new server
+
+sudo apt-get update
+sudo apt-get -y install haproxy
+echo 'ENABLED=1' >> sudo tee /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+echo 'backend web_backend
+     	      balance roundrobin
+	      mode http
+	      server 345282-web-01 ubuntu@52.3.242.181
+	      server 345282-web-02 ubuntu@54.160.89.117' >> sudo tee /etc/haproxy/haproxy.cfg
+
+echo 'frontend http
+     	       bind \*:80
+	       mode http
+	       default_backend web_backend' >> sudo tee /etc/haproxy/haproxy.cfg
+
+sudo service haproxy start

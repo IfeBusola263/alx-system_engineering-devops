@@ -1,5 +1,7 @@
 # This manifest configures a new ubuntu server
 
+include stdlib
+
 package {'nginx':
   ensure  =>  installed,
 }
@@ -9,17 +11,14 @@ file {'/var/www/html/index.html':
   content =>  'Hello World!',
 }
 
-file { '/etc/nginx/sites-enabled/':
+file { '/etc/nginx/sites-enabled/def*':
   ensure  =>  absent,
 }
 
-file { '/etc/nginx/sites-available/default':
-  ensure  =>  present,
-}
--> file_line { 'including custom header':
+file_line { 'including custom header':
   path  =>  '/etc/nginx/sites-available/default',
-  line  =>  "# as directory, then fall back to displaying a 404.\n\t\tadd_header X-Served-By \"${HOSTNAME}\";",
-  match => '^# as directory, then fall back to displaying a 404.$',
+  line  =>  "\t\t# as directory, then fall back to displaying a 404.\n\t\tadd_header X-Served-By \"${fact['networking']['hostname']}\";",
+  match =>  '# as directory, then fall back to displaying a 404.',
 }
 
 file {'/etc/nginx/sites-enabled/default':

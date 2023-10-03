@@ -4,7 +4,7 @@
 sudo apt-get update
 sudo apt-get -y install haproxy
 echo 'ENABLED=1' >> sudo tee /etc/default/haproxy
-cp -a /etc/haproxy/haproxy.cfg{,.original}
+sudo cp -a /etc/haproxy/haproxy.cfg{,.original}
 echo 'backend web_backend
      	      balance roundrobin
 	      mode http

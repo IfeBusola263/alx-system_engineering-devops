@@ -1,5 +1,4 @@
 # This manifest configures a new ubuntu server
-
 include stdlib
 
 package {'nginx':

@@ -22,8 +22,8 @@ file_line { 'including custom header':
   }
 
 file {'/etc/nginx/sites-enabled/default':
-  ensure   =>  link,
-  target   =>  '/etc/nginx/sites-available/default',
+  ensure =>  link,
+  target =>  '/etc/nginx/sites-available/default',
   }
 
 service { 'nginx':

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script checks if Nginx is running on port 80
-sed -i '0,/listen.*/s//listen 80 default_server;/' /etc/nginx/sites-available/default
+sed -i '0,/8080/s//80/' /etc/nginx/sites-available/default
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 service nginx stop

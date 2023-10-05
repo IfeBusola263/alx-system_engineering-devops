@@ -2,4 +2,8 @@
 # This script checks if Nginx is running on port 80
 apt-get update
 apt-get -y install nginx
+sed -i '0,/listen.*/s//listen 80 default_server;/' /etc/nginx/sites-available/default
+#sed -i 's|^listen [::]$|listen [::]:80 default_server;|1' /etc/nginx/sites-available/default
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 service nginx start

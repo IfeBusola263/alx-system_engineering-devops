@@ -9,7 +9,7 @@ len=${#subdom[@]}
 
 # check for no arguments
 if [ -z "$1" ]; then
-    exit 1
+    return 1
 fi
 
 # function to get information

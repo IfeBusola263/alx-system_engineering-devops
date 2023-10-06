@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# The script displays information about subdomains
+
+# subdomains to generate information from
+subdom=("www" "lb-01" "web-01" "web-02")
+
+# get the length of the loop so help loop through
+len=${#subdom[@]}
+
+# check for no arguments
+if [ -z "$1" ]; then
+    exit 1
+fi
+
+# function to get information
+get_info()
+{
+    dig "$1" | grep -A1 'ANSWER SECTION:' | awk 'NR==2'
+}
+
+if [ -z "$2" ]; then
+    for ((i=0; i < len; i++)); do
+
+	# address to get info from
+	# url becomes soemthing like www.domain_name_provided.com
+	url="${subdom[i]}.$1"
+	info=$(get_info "$url")
+	record=$(awk '{print $4}' <<< "$info")
+	dest=$(awk '{print $5}' <<< "$info")
+	echo "The subdomain ${subdom[i]} is a $record record and points to $dest"
+    done
+else
+    url="$2.$1"
+    info=$(get_info "$url")
+    record=$(awk '{print $4}' <<< "$info")
+    dest=$(awk '{print $5}' <<< "$info")
+    echo "The subdomain $2 is a $record record and points to $dest"
+fi

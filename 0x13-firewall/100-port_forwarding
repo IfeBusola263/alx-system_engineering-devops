@@ -8,6 +8,15 @@
 #   ufw-before-forward
 #
 
+#Nat table rules
+*nat
+:PREROUTING ACCEPT [0:0]
+
+# Forward traffic from port 8080 to port 80.
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+
+COMMIT
+
 # Don't delete these required lines, otherwise there will be errors
 *filter
 :ufw-before-input - [0:0]
@@ -72,16 +81,4 @@
 -A ufw-before-input -p udp -d 239.255.255.250 --dport 1900 -j ACCEPT
 
 # don't delete the 'COMMIT' line or these rules won't be processed
-COMMIT
-
-#Nat table rules
-*nat
-:POSTROUTING ACCEPT [0:0]
-
-# Forward traffic from port 8080 to port 80.
--A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 52.3.242.181:80
-
-# Don’t masquerade local traffic.
--A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
-
 COMMIT

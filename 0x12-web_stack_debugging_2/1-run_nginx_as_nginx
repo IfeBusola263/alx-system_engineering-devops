@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # This script starts nginx as another user
-chown nginx: /var/run/*.pid /var/log/nginx/ /etc/nginx/*
 sed -i 's|80|8080|' /etc/nginx/sites-available/default
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+useradd nginx
+chown nginx: /var/run/*.pid /var/log/nginx/ /etc/nginx/*
 sudo -u nginx service nginx start

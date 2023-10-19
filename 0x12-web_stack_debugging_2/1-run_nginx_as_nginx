@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # This script starts nginx as another user
+sed -i 's|^user .*;$|user nginx;|' /etc/nginx/nginx.conf
 sed -i 's|80|8080|' /etc/nginx/sites-available/default
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-sed -i 's|^user .*;$|user nginx;|' /etc/nginx/nginx.conf
 chown -R nginx: /run/ /var/log/nginx/
-sudo -u nginx service nginx restart
+service nginx stop
+sudo -u nginx service nginx start

@@ -15,7 +15,7 @@ if __name__ == '__main__':
     to_do = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.format(argv[1]))
 
-    fields = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
+    # fields = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
     rows = []
     name = user.json().get('username')
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
         writer = csv.writer(csv_file)
 
         # writing the column title or fields
-        writer.writerow(fields)
+        # writer.writerow(fields)
 
         # write the data
         writer.writerows(rows)

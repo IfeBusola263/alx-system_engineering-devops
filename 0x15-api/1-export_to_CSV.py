@@ -27,7 +27,7 @@ if __name__ == '__main__':
         row.append(task["title"])
         rows.append(row)
 
-    with open('USER_ID.csv', 'w', encoding='utf-8') as csv_file:
+    with open(f'{argv[1]}.csv', 'w', encoding='utf-8') as csv_file:
         # create a csv writer object
         writer = csv.writer(csv_file)
 

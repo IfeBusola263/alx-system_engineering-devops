@@ -5,8 +5,8 @@ EMPLOYEE_NAME and TASK_TITLE
 """
 
 if __name__ == '__main__':
-    from sys import argv
     import requests
+    from sys import argv
 
     user = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
@@ -21,10 +21,10 @@ if __name__ == '__main__':
     done = 0
 
     for task in to_do.json():
-        if task["completed"] == True:
+        if task["completed"] is True:
             done += 1
 
     print(f'Employee {name} is done with tasks({done}/{numTask}):')
     for task in to_do.json():
-        if task["completed"] == True:
+        if task["completed"] is True:
             print(f'\t {task["title"]}')

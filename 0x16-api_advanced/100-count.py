@@ -19,10 +19,10 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
     if after:
         params['after'] = after
 
-    url = 'https://www.reddit.com/r/{}/top.json?sort=top&show=all&t=all'.format(
+    ul = 'https://www.reddit.com/r/{}/top.json?sort=top&show=all&t=all'.format(
         subreddit)
 
-    response = requests.get(url, headers=header, params=params)
+    response = requests.get(ul, headers=header, params=params)
 
     if response.status_code != 200:
         return None

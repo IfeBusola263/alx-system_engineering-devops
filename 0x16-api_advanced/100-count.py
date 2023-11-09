@@ -1,54 +1,53 @@
 #!/usr/bin/python3
-"""This module implements a count of all the given keywords
+"""This Module implements a fucntion to count words in
+all hot posts of a given Reddit subreddit.
 """
 import requests
 
 
-def count_words(subreddit, word_list, after=None, count_dict=None):
-    """This function counts the number of sorted keywords supplied
-    and returns none if the subreddit does not exist.
+def count_words(subreddit, word_list, after=None, counts=None):
     """
-    if count_dict is None:
-        count_dict = {}
+    Prints counts of given words found in hot posts of a given subreddit.
+    """
+    if counts is None:
+        counts = {}
 
-    header = {
-        'User-agent': 'IFEBUZZ',
-        }
-    params = {'limit': 25}
+    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
+    headers = {'User-Agent': 'IFEBUZZ'}
+    params = {'limit': 100}  # Limit the number of posts to 100 (maximum)
 
     if after:
         params['after'] = after
 
-    ul = 'https://www.reddit.com/r/{}/top.json?sort=top&show=all&t=all'.format(
-        subreddit)
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
 
-    response = requests.get(ul, headers=header, params=params)
+    if response.status_code == 200:
+        data = response.json()
 
-    if response.status_code != 200:
-        return None
+        # Parse the titles of the posts after extraction
+        for post in data.get('data', {}).get('children', []):
+            title = post.get('data', {}).get('title', '').lower()
+            words = title.split()
 
-    response_to_json = response.json()
-    post_list = response_to_json.get('data', {}).get('children', [])
+            # check for keyword in title and count
+            for word in word_list:
+                if word.lower() in words:
+                    times = words.count(word.lower())
+                    counts[word.lower()] = counts.get(word.lower(), 0) + times
 
-    for post in post_list:
-        title = post['data']['title'].upper()
-        for word in word_list:
-            if word.upper() in title:
-                count_dict[word] = count_dict.get(word, 0) + 1
+        # Check for next page if it exists
+        after = data.get('data', {}).get('after')
+        if after:
+            return count_words(subreddit, word_list, after, counts)
 
-    after = response_to_json.get('data').get('after')
+        if not counts:
+            return
 
-    if after:
-        count_words(subreddit, word_list, after, count_dict)
+        # Once done, print the sorted results
+        sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+        for word, count in sorted_counts:
+            print(f"{word}: {count}")
+
     else:
-        print_results(count_dict)
-
-
-def print_results(word_list):
-    """Helper function for printing count and word"""
-    word_counts = {}
-    for word, count in zip(word_list, range(len(word_list))):
-        word_counts[word.lower()] = count
-    sorted_counts = sorted(word_counts.items(), key=lambda x: (-x[1], x[0]))
-    for word, count in sorted_counts:
-        print(f"{word}: {count}")
+        return

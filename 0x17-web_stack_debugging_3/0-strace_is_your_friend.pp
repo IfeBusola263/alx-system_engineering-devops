@@ -3,5 +3,5 @@
 
 exec { 'replace_string_in_php_settings':
   command =>  'sed -i "s|phpp|php|" /var/www/html/wp-settings.php',
-  path    =>  '/usr/bin',
+  path    =>  '/usr/local/bin',
 }

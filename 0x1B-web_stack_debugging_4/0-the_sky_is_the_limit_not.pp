@@ -14,3 +14,8 @@ service { 'nginx':
   enable  =>  true,
   require =>  Package['nginx'],
 }
+
+exec { 'restart nginx':
+  command =>  'service nginx restart',
+  path    =>  '/usr/sbin/:/bin/',
+}

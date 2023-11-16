@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script reload the gunicorn service gracefully
+sudo service gunicorn restart
